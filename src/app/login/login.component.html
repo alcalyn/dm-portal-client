@@ -1,0 +1,11 @@
+<form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="form-username">Nom d'utilisateur ({{user.username}})</label>
+        <input [(ngModel)]="user.username" type="text" name="username" class="form-control" id="form-username" placeholder="Nom d'utilisateur">
+    </div>
+    <div class="form-group">
+        <label for="form-password">Mot de passe</label>
+        <input [(ngModel)]="user.password" type="password" name="password" class="form-control" id="form-password" placeholder="Mot de passe">
+    </div>
+    <button type="submit" class="btn btn-primary">Se connecter</button>
+</form>
