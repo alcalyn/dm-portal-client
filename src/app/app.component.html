@@ -1,7 +1,13 @@
 <div class="container-fluid">
     <h1>
-        {{title}}
+        {{ title }}
     </h1>
+
+    <ul>
+        <li *ngFor="let article of articles">
+           {{ article.title }}
+        </li>
+    </ul>
 
     <div class="row">
         <div class="col-sm-6 offset-sm-3 col-md-4 offset-md-4">

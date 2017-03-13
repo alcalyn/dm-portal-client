@@ -8,16 +8,16 @@ import { AuthenticationService } from './_service/authentication.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'Articles';
+    title: string = 'Articles';
+    articles: Array<Object> = [];
 
     constructor(private portalApi: PortalApiService, private authentication: AuthenticationService) {
     }
 
     test() {
-        console.log('get me');
         this.authentication.accessToken().first().subscribe(token => {
             this.portalApi.getMe(token).subscribe();
-            this.portalApi.getArticles(token).subscribe();
+            this.portalApi.getArticles(token).subscribe(articles => this.articles = articles);
         })
     }
 
