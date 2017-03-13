@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { User } from '../_model/user';
 import { AuthenticationService } from '../_service/authentication.service';
@@ -8,7 +8,7 @@ import { AuthenticationService } from '../_service/authentication.service';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
     user = new User();
     submitted = false;
@@ -18,13 +18,10 @@ export class LoginComponent implements OnInit {
         this.authentication = authentication;
     }
 
-    ngOnInit() {
-    }
-
     onSubmit() {
         console.log('submit', this.user);
         this.submitted = true;
-        this.authentication.login(this.user.username, this.user.password).subscribe();
+        this.authentication.login(this.user.username, this.user.password);
     }
 
 }

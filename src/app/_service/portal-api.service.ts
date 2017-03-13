@@ -21,13 +21,34 @@ export class PortalApiService {
 
         return this.http
             .get(url, {search: params})
-            .map(this.extractData)
+            .map(result => result.json())
         ;
     }
 
-    private extractData(res: Response) {
-        let body = res.json();
-        return body.data || { };
+    getMe(accessToken: string) {
+        return this.http
+            .get(environment.portalApi.url + 'api/users/me', {
+                headers: this.createOAuthHeaders(accessToken),
+            })
+            .map(result => result.json())
+        ;
+    }
+
+    getArticles(accessToken: string) {
+        return this.http
+            .get(environment.portalApi.url + 'api/articles', {
+                headers: this.createOAuthHeaders(accessToken),
+            })
+            .map(result => result.json())
+        ;
+    }
+
+    private createOAuthHeaders(accessToken: string) {
+        let headers = new Headers();
+
+        headers.append('Authorization', 'Bearer ' + accessToken);
+
+        return headers;
     }
 
 }

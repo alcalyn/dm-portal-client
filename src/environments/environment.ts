@@ -6,7 +6,7 @@
 export const environment = {
     production: false,
     portalApi: {
-        url: 'http://127.0.0.1/dm-portal-api/web/app_dev.php/',
+        url: 'http://0.0.0.0:8000/app_dev.php/',
         oauth: {
             client: {
                 id: '1_2i01pqc5pdc0oowk0kogc48cggk800sscos0cgk84wg4kg4wo8',
